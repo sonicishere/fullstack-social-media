@@ -1,0 +1,33 @@
+.theme-toggle-btn {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.theme-toggle-icon {
+  z-index: 1;
+  font-size: 14px;
+}
+
+.theme-toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  transition: transform 0.3s ease;
+}
+
+[data-theme='light'] .theme-toggle-slider {
+  transform: translateX(30px);
+}
