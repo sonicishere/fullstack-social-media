@@ -43,4 +43,7 @@ connectDB().then(() => {
     console.log(`Server running on port ${PORT}`);
   });
 });
+app.get('/', (req, res) => {
+  res.send('Server is running successfully! 🚀');
+});
 export default app;
