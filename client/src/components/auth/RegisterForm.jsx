@@ -29,8 +29,11 @@ const RegisterForm = () => {
       return toast.error('Passwords do not match');
     }
     
+    // فصل confirmPassword عن باقي البيانات عشان الـ Backend ما يعترضش
+    const { confirmPassword, ...registerData } = formData;
+
     try {
-      await dispatch(registerUser(formData)).unwrap();
+      await dispatch(registerUser(registerData)).unwrap();
       toast.success('Registration successful!');
       navigate('/');
     } catch (err) {
