@@ -44,6 +44,6 @@ connectDB().then(() => {
   });
 });
 app.get('/', (req, res) => {
-  res.send('Server is running successfully! 🚀');
+  res.send('Server is running successfully! ');
 });
 export default app;
