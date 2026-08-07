@@ -1,0 +1,12 @@
+{
+  "name": "fullstack",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "build": "npm --prefix client run build"
+  }
+}

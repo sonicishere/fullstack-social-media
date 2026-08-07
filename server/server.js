@@ -17,9 +17,10 @@ dotenv.config();
 
 const app = express();
 
-const corsOptions = process.env.NODE_ENV === 'production'
-  ? { origin: process.env.CLIENT_URL, credentials: true }
-  : { origin: true, credentials: true };
+const corsOptions = {
+  origin: process.env.CLIENT_URL || true,
+  credentials: true
+};
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -38,11 +39,18 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+if (process.env.VERCEL) {
+  connectDB().catch((error) => {
+    console.error(`Failed to connect to MongoDB: ${error.message}`);
   });
-});
+} else {
+  connectDB().then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  });
+}
+
 app.get('/', (req, res) => {
   res.send('Server is running successfully! ');
 });
