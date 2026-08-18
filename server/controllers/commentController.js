@@ -13,7 +13,6 @@ const removeCommentAndReplies = async (commentId, postId) => {
 };
 
 export const addComment = asyncHandler(async (req, res) => {
-  // 1. استقبال النص سواء كان اسمه text أو content
   const content = req.body.text || req.body.content;
   
   if (!content) {
